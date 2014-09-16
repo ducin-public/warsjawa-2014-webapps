@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Warsjawa-2014-webapps by tkoomzaaskz</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Warsjawa-2014-webapps</h1>
+        <p class="header">warsjawa 2014 workshop: Modern webapp development workflow/tools</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/tkoomzaaskz/warsjawa-2014-webapps/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/tkoomzaaskz/warsjawa-2014-webapps/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/tkoomzaaskz/warsjawa-2014-webapps">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/tkoomzaaskz">tkoomzaaskz</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="modern-webapp-development-workflowtools" class="anchor" href="#modern-webapp-development-workflowtools"><span class="octicon octicon-link"></span></a>Modern webapp development workflow/tools</h1>
+
+<h2>
+<a name="workshop-scenario" class="anchor" href="#workshop-scenario"><span class="octicon octicon-link"></span></a>workshop scenario</h2>
+
+<p>26th September 2014,
+<a href="http://warsjawa.pl/">Warsjawa</a><br><a href="http://pl.linkedin.com/pub/tomasz-ducin/4b/34a/822">Tomasz Ducin</a></p>
+
+<hr><p><a href="http://gruntjs.com/"><img src="https://cdn.gruntjs.com/builtwith.png" alt="Built with Grunt"></a></p>
+
+<h2>
+<a name="intro" class="anchor" href="#intro"><span class="octicon octicon-link"></span></a>intro</h2>
+
+<h3>
+<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>prerequisites</h3>
+
+<ul>
+<li>node/npm, v0.10.x</li>
+<li>git</li>
+<li>shell (bash, powershell, etc.)</li>
+<li>modern browser</li>
+</ul><p>I'm gonna use linux/ubuntu and chrome.</p>
+
+<hr><h2>
+<a name="npm-node-package-manager" class="anchor" href="#npm-node-package-manager"><span class="octicon octicon-link"></span></a>
+<a href="https://www.npmjs.org/">npm</a>: node package manager</h2>
+
+<p><img src="images/npm-small.png" alt="Node package manager logo" title="npm logo"></p>
+
+<p><a href="https://www.npmjs.org/search?q=warsjawa">npm search</a></p>
+
+<p>install a package globally:</p>
+
+<pre><code>npm install -g &lt;package&gt;
+</code></pre>
+
+<p>or locally:</p>
+
+<pre><code>npm install &lt;package&gt;
+npm install &lt;package&gt; --save
+npm install &lt;package&gt; --save-dev
+</code></pre>
+
+<p>more in the <a href="https://www.npmjs.org/doc/cli/npm-install.html">docs</a>.</p>
+
+<p>initialize project:</p>
+
+<pre><code>mkdir project &amp;&amp; cd project
+npm init # creating package.json manifest file
+</code></pre>
+
+<p>fetch dependencies from existent project:</p>
+
+<pre><code>git clone https://github.com/tkoomzaaskz/tree
+cd tree
+npm install
+</code></pre>
+
+<hr><h2>
+<a name="bower-web-assets-manager" class="anchor" href="#bower-web-assets-manager"><span class="octicon octicon-link"></span></a>
+<a href="http://bower.io/">bower</a>: web assets manager</h2>
+
+<p><img src="images/bower-small.png" alt="Bower web assets manager logo" title="bower logo"></p>
+
+<p><a href="http://bower.io/search/">bower search</a></p>
+
+<p>install bower tool:</p>
+
+<pre><code>npm install -g bower
+</code></pre>
+
+<p>initialize project: </p>
+
+<pre><code>bower init # creating bower.json manifest file
+</code></pre>
+
+<p>install packages:</p>
+
+<pre><code>bower install &lt;package&gt;
+bower install &lt;package&gt; --save
+bower install &lt;package&gt; --save-dev
+</code></pre>
+
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> bower <code>depencencies</code> vs <code>devDepencencies</code> (<a href="http://stackoverflow.com/a/19341028/769384">SO question</a>)</p>
+
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> when to use <code>npm install</code> and when <code>bower install</code> (<a href="http://stackoverflow.com/q/15092345/769384">SO question</a>, <a href="http://tech.pro/tutorial/1190/package-managers-an-introductory-guide-for-the-uninitiated-front-end-developer">extensive guide</a>)</p>
+
+<p>register your package:</p>
+
+<pre><code>bower register &lt;my-package-name&gt; &lt;git-endpoint&gt;
+</code></pre>
+
+<p>more about <a href="http://bob.yexley.net/creating-and-maintaining-your-own-bower-package/">creating and maintaining bower packages </a></p>
+
+<p><a href="http://bower.io/docs/config/">customize</a> bower:</p>
+
+<pre><code>$EDITOR .bowerrc
+</code></pre>
+
+<p>grab an <a href="files/.bowerrc">example</a> that overrides <code>bower_components</code> to <code>src/vendor</code>.</p>
+
+<hr><h2>
+<a name="grunt-task-runner" class="anchor" href="#grunt-task-runner"><span class="octicon octicon-link"></span></a>
+<a href="http://gruntjs.com/">grunt</a>: task runner</h2>
+
+<p><img src="images/grunt-small.png" alt="Grunt task runner logo" title="grunt logo"></p>
+
+<p><a href="http://gruntjs.com/plugins">grunt search</a></p>
+
+<p>install grunt tool:</p>
+
+<pre><code>npm install -g grunt-cli
+npm install grunt --save-dev
+</code></pre>
+
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> grunt-cli and grunt are separate - why is that</p>
+
+<p>initialize manually:</p>
+
+<pre><code>$EDITOR Gruntfile.js
+</code></pre>
+
+<p>or automatically:</p>
+
+<pre><code>npm install -g grunt-init
+grunt-init gruntfile
+</code></pre>
+
+<h3>
+<a name="basic-grunt-configuration---plugins-targets" class="anchor" href="#basic-grunt-configuration---plugins-targets"><span class="octicon octicon-link"></span></a>basic grunt configuration - plugins, targets</h3>
+
+<hr><h2>
+<a name="yo-project-scaffolding" class="anchor" href="#yo-project-scaffolding"><span class="octicon octicon-link"></span></a>
+<a href="http://yeoman.io/">yo</a>: project scaffolding</h2>
+
+<p><img src="images/yeoman-small.png" alt="Yeoman project scaffolding logo" title="yeoman logo"></p>
+
+<p><a href="http://yeoman.io/generators/">yeoman search</a></p>
+
+<hr><h2>
+<a name="alternatively" class="anchor" href="#alternatively"><span class="octicon octicon-link"></span></a>alternatively</h2>
+
+<p><img src="images/modernizr-small.png" alt="Modernizr logo" title="moedrnizr logo"></p>
+
+<p><img src="images/travis-small.png" alt="Travis-ci logo" title="travis-ci logo"></p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
