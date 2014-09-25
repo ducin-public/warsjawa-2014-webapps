@@ -98,10 +98,15 @@ npm install [...]
 <ul>
 <li><code>~/.npm</code></li>
 <li><code>/usr/lib/node_modules</code></li>
-</ul><p>initialize project:</p>
+</ul><p>nitialize project manually (grab <a href="files/package.json">minimalistic example</a>):</p>
 
 <pre><code># inside project directory
-npm init # creating package.json manifest file
+#EDITOR package.json # creating manifest file
+</code></pre>
+
+<p>or automatically:</p>
+
+<pre><code>npm init # creating manifest file
 </code></pre>
 
 <p>fetch dependencies from existent project:</p>
@@ -111,11 +116,19 @@ cd warsjawa-2014-webapps
 npm install
 </code></pre>
 
+<p>publish/unpublish package (<code>package.json</code> file needed with <code>name</code> and <code>version</code> specified):</p>
+
+<pre><code>npm publish
+npm unpublish [--force]
+</code></pre>
+
 <hr><h1>
 <a name="bower-web-assets-manager" class="anchor" href="#bower-web-assets-manager"><span class="octicon octicon-link"></span></a>
 <a href="http://bower.io/">bower</a>: web assets manager</h1>
 
 <p><img src="images/bower-small.png" alt="Bower web assets manager logo" title="bower logo"></p>
+
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> when to use <code>npm</code> and when <code>bower</code> (<a href="http://stackoverflow.com/a/21199026">SO question</a>, <a href="http://stackoverflow.com/q/15092345/769384">another SO question</a>, <a href="http://tech.pro/tutorial/1190/package-managers-an-introductory-guide-for-the-uninitiated-front-end-developer">extensive guide</a>)</p>
 
 <p><a href="http://bower.io/search/">bower search</a></p>
 
@@ -146,8 +159,6 @@ bower install &lt;package&gt; --save-dev
 <p><img class="emoji" title=":exclamation:" alt=":exclamation:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2757.png" height="20" width="20" align="absmiddle"> dependencies</p>
 
 <p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> bower <code>depencencies</code> vs <code>devDepencencies</code> (<a href="http://stackoverflow.com/a/19341028/769384">SO question</a>)</p>
-
-<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> when to use <code>npm install</code> and when <code>bower install</code> (<a href="http://stackoverflow.com/a/21199026">SO question</a>, <a href="http://stackoverflow.com/q/15092345/769384">another SO question</a>, <a href="http://tech.pro/tutorial/1190/package-managers-an-introductory-guide-for-the-uninitiated-front-end-developer">extensive guide</a>)</p>
 
 <p>register your package:</p>
 
