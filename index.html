@@ -54,15 +54,22 @@
 <a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>prerequisites</h3>
 
 <ul>
-<li>node/npm, v0.10.x</li>
-<li>git</li>
+<li>node/npm installed, v0.10+</li>
+<li>git installed, github account</li>
 <li>shell (bash, powershell, etc.)</li>
 <li>modern browser</li>
 </ul><p>I'm gonna use linux/ubuntu and chrome.</p>
 
-<hr><h2>
+<h3>
+<a name="plan" class="anchor" href="#plan"><span class="octicon octicon-link"></span></a>plan</h3>
+
+<ul>
+<li>separate tools: npm, bower, grunt, yo</li>
+<li>combining tools: yeoman workflow</li>
+<li><em>only if we have time: travis-ci, modernizr</em></li>
+</ul><hr><h1>
 <a name="npm-node-package-manager" class="anchor" href="#npm-node-package-manager"><span class="octicon octicon-link"></span></a>
-<a href="https://www.npmjs.org/">npm</a>: node package manager</h2>
+<a href="https://www.npmjs.org/">npm</a>: node package manager</h1>
 
 <p><img src="images/npm-small.png" alt="Node package manager logo" title="npm logo"></p>
 
@@ -70,7 +77,7 @@
 
 <p>install a package globally:</p>
 
-<pre><code>npm install -g &lt;package&gt;
+<pre><code>[sudo] npm install -g &lt;package&gt;
 </code></pre>
 
 <p>or locally:</p>
@@ -80,24 +87,33 @@ npm install &lt;package&gt; --save
 npm install &lt;package&gt; --save-dev
 </code></pre>
 
-<p>more in the <a href="https://www.npmjs.org/doc/cli/npm-install.html">docs</a>.</p>
-
-<p>initialize project:</p>
+<p>more in the <a href="https://www.npmjs.org/doc/cli/npm-install.html">docs</a>. Use search and install a module, e.g. jquery (no deps), backbone (deps), underscore (independent on backbone):</p>
 
 <pre><code>mkdir project &amp;&amp; cd project
+npm install [...]
+</code></pre>
+
+<p><img class="emoji" title=":exclamation:" alt=":exclamation:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2757.png" height="20" width="20" align="absmiddle"> don't do <code>sudo npm install &lt;package&gt;</code> (sudo, non-global), see</p>
+
+<ul>
+<li><code>~/.npm</code></li>
+<li><code>/usr/lib/node_modules</code></li>
+</ul><p>initialize project:</p>
+
+<pre><code># inside project directory
 npm init # creating package.json manifest file
 </code></pre>
 
 <p>fetch dependencies from existent project:</p>
 
-<pre><code>git clone https://github.com/tkoomzaaskz/tree
-cd tree
+<pre><code>git clone https://github.com/tkoomzaaskz/warsjawa-2014-webapps
+cd warsjawa-2014-webapps
 npm install
 </code></pre>
 
-<hr><h2>
+<hr><h1>
 <a name="bower-web-assets-manager" class="anchor" href="#bower-web-assets-manager"><span class="octicon octicon-link"></span></a>
-<a href="http://bower.io/">bower</a>: web assets manager</h2>
+<a href="http://bower.io/">bower</a>: web assets manager</h1>
 
 <p><img src="images/bower-small.png" alt="Bower web assets manager logo" title="bower logo"></p>
 
@@ -105,13 +121,20 @@ npm install
 
 <p>install bower tool:</p>
 
-<pre><code>npm install -g bower
+<pre><code>[sudo] npm install -g bower
 </code></pre>
 
-<p>initialize project: </p>
+<p>initialize manually (grab <a href="files/bower.json">minimalistic example</a>):</p>
 
-<pre><code>bower init # creating bower.json manifest file
+<pre><code>$EDITOR bower.json # creating manifest file
 </code></pre>
+
+<p>or automatically:</p>
+
+<pre><code>bower init # creating manifest file
+</code></pre>
+
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> purpose of <em>main file</em> (<a href="http://stackoverflow.com/questions/20391742/what-is-the-main-property-when-doing-bower-init">SO question</a>)</p>
 
 <p>install packages:</p>
 
@@ -120,14 +143,18 @@ bower install &lt;package&gt; --save
 bower install &lt;package&gt; --save-dev
 </code></pre>
 
+<p><img class="emoji" title=":exclamation:" alt=":exclamation:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2757.png" height="20" width="20" align="absmiddle"> dependencies</p>
+
 <p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> bower <code>depencencies</code> vs <code>devDepencencies</code> (<a href="http://stackoverflow.com/a/19341028/769384">SO question</a>)</p>
 
-<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> when to use <code>npm install</code> and when <code>bower install</code> (<a href="http://stackoverflow.com/q/15092345/769384">SO question</a>, <a href="http://tech.pro/tutorial/1190/package-managers-an-introductory-guide-for-the-uninitiated-front-end-developer">extensive guide</a>)</p>
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> when to use <code>npm install</code> and when <code>bower install</code> (<a href="http://stackoverflow.com/a/21199026">SO question</a>, <a href="http://stackoverflow.com/q/15092345/769384">another SO question</a>, <a href="http://tech.pro/tutorial/1190/package-managers-an-introductory-guide-for-the-uninitiated-front-end-developer">extensive guide</a>)</p>
 
 <p>register your package:</p>
 
 <pre><code>bower register &lt;my-package-name&gt; &lt;git-endpoint&gt;
 </code></pre>
+
+<p><img class="emoji" title=":exclamation:" alt=":exclamation:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2757.png" height="20" width="20" align="absmiddle"> git only, git tags</p>
 
 <p>more about <a href="http://bob.yexley.net/creating-and-maintaining-your-own-bower-package/">creating and maintaining bower packages </a></p>
 
@@ -138,9 +165,9 @@ bower install &lt;package&gt; --save-dev
 
 <p>grab an <a href="files/.bowerrc">example</a> that overrides <code>bower_components</code> to <code>src/vendor</code>.</p>
 
-<hr><h2>
+<hr><h1>
 <a name="grunt-task-runner" class="anchor" href="#grunt-task-runner"><span class="octicon octicon-link"></span></a>
-<a href="http://gruntjs.com/">grunt</a>: task runner</h2>
+<a href="http://gruntjs.com/">grunt</a>: task runner</h1>
 
 <p><img src="images/grunt-small.png" alt="Grunt task runner logo" title="grunt logo"></p>
 
@@ -148,40 +175,137 @@ bower install &lt;package&gt; --save-dev
 
 <p>install grunt tool:</p>
 
-<pre><code>npm install -g grunt-cli
+<pre><code>[sudo] npm install -g grunt-cli
 npm install grunt --save-dev
 </code></pre>
 
 <p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> grunt-cli and grunt are separate - why is that</p>
 
-<p>initialize manually:</p>
+<p>initialize manually (grab <a href="Gruntfile.js">this repo example</a>):</p>
 
 <pre><code>$EDITOR Gruntfile.js
 </code></pre>
 
 <p>or automatically:</p>
 
-<pre><code>npm install -g grunt-init
+<pre><code>[sudo] npm install -g grunt-init
 grunt-init gruntfile
 </code></pre>
+
+<p>check out <a href="http://stackoverflow.com/a/18745996/769384">more grunt-init tasks</a>.</p>
 
 <h3>
 <a name="basic-grunt-configuration---plugins-targets" class="anchor" href="#basic-grunt-configuration---plugins-targets"><span class="octicon octicon-link"></span></a>basic grunt configuration - plugins, targets</h3>
 
-<hr><h2>
+<p>grunt API: see <a href="http://gruntjs.com/getting-started#an-example-gruntfile">docs</a></p>
+
+<p>basic working example: see <a href="Gruntfile.js">this repo example</a></p>
+
+<h3>
+<a name="example-tasks" class="anchor" href="#example-tasks"><span class="octicon octicon-link"></span></a>example tasks</h3>
+
+<p><img class="emoji" title=":exclamation:" alt=":exclamation:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2757.png" height="20" width="20" align="absmiddle"><code>grunt-contrib-*</code></p>
+
+<p>static code analysis:</p>
+
+<pre><code>npm install grunt-contrib-jshint --save-dev
+</code></pre>
+
+<p>release build:</p>
+
+<pre><code>npm install grunt-contrib-uglify --save-dev
+</code></pre>
+
+<p>background automatic tasks:</p>
+
+<pre><code>npm install grunt-contrib-watch --save-dev
+</code></pre>
+
+<p>more tasks:
+<a href="https://github.com/gruntjs/grunt-contrib-copy">copy</a>,
+<a href="https://github.com/gruntjs/grunt-contrib-concat">concat</a>,
+<a href="https://github.com/gruntjs/grunt-contrib-cssmin">cssmin</a>,
+<a href="https://github.com/gruntjs/grunt-contrib-sass">sass</a>/<a href="https://github.com/gruntjs/grunt-contrib-compass">compass</a>,
+<a href="https://github.com/gruntjs/grunt-contrib-requirejs">requirejs</a>,
+<a href="https://github.com/gruntjs/grunt-contrib-compress">compress</a></p>
+
+<h3>
+<a name="more" class="anchor" href="#more"><span class="octicon octicon-link"></span></a>more</h3>
+
+<p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> how about alternatives: <a href="http://gulpjs.com/">gulp</a>, <a href="http://brunch.io/">brunch</a>? See <a href="http://alxhill.com/blog/articles/brunch-coffeescript-angular/">grunt vs brunch</a> or <a href="http://blog.toggl.com/2014/03/grunt-vs-gulp-vs-brunch/">grunt vs gulp vs brunch</a> subjective comparisons</p>
+
+<hr><h1>
 <a name="yo-project-scaffolding" class="anchor" href="#yo-project-scaffolding"><span class="octicon octicon-link"></span></a>
-<a href="http://yeoman.io/">yo</a>: project scaffolding</h2>
+<a href="http://yeoman.io/">yo</a>: project scaffolding</h1>
 
 <p><img src="images/yeoman-small.png" alt="Yeoman project scaffolding logo" title="yeoman logo"></p>
 
 <p><a href="http://yeoman.io/generators/">yeoman search</a></p>
 
-<hr><h2>
-<a name="alternatively" class="anchor" href="#alternatively"><span class="octicon octicon-link"></span></a>alternatively</h2>
+<p>install yeoman tool:</p>
 
-<p><img src="images/modernizr-small.png" alt="Modernizr logo" title="moedrnizr logo"></p>
+<pre><code>[sudo] npm install -g yo
+</code></pre>
+
+<p>searches generator-* node modules</p>
+
+<h2>
+<a name="using-generators" class="anchor" href="#using-generators"><span class="octicon octicon-link"></span></a>using generators</h2>
+
+<p>install specific generator:</p>
+
+<pre><code>[sudo] npm install -g generator-webapp
+</code></pre>
+
+<p>and run it:</p>
+
+<pre><code>mkdir my-yo-project
+cd my-yo-project
+yo webapp
+</code></pre>
+
+<h2>
+<a name="yeoman-workflow" class="anchor" href="#yeoman-workflow"><span class="octicon octicon-link"></span></a>yeoman workflow</h2>
+
+<p><a href="http://yeoman.io/learning/">http://yeoman.io/learning/</a></p>
+
+<hr><h1>
+<a name="travis-continuous-integration" class="anchor" href="#travis-continuous-integration"><span class="octicon octicon-link"></span></a>
+<a href="https://travis-ci.org/">travis</a>: continuous integration</h1>
 
 <p><img src="images/travis-small.png" alt="Travis-ci logo" title="travis-ci logo"></p>
+
+<ul>
+<li>register account (using github account)</li>
+<li>create stub test command</li>
+<li>update package.json:</li>
+</ul><pre><code>"scripts": {
+    "test": &lt;my-test-command&gt;
+}
+</code></pre>
+
+<ul>
+<li>create travis manifest file (grab <a href="files/.travis.yml">example</a>):</li>
+</ul><pre><code>$EDITOR .travis.yml
+</code></pre>
+
+<ul>
+<li>push to github</li>
+</ul><hr><h1>
+<a name="practice" class="anchor" href="#practice"><span class="octicon octicon-link"></span></a>practice</h1>
+
+<ul>
+<li>
+<a href="http://sinonjs.org/">sinon.js</a> problem: install it with bower and <a href="https://github.com/yatskevich/grunt-bower-task">grunt-bower-task</a> (rely on <a href="https://muffinresearch.co.uk/using-sinon-js-with-bower-why-is-sinon-foo-undefined/">this article</a>)</li>
+</ul><p><img src="images/modernizr-small.png" alt="Modernizr logo" title="moedrnizr logo"></p>
+
+<h2>
+<a name="further-practice" class="anchor" href="#further-practice"><span class="octicon octicon-link"></span></a>further practice</h2>
+
+<ul>
+<li>try out <a href="http://yeoman.io/codelab.html">angular-based tutorial</a>
+</li>
+</ul>
       </section>
       <footer>
         <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
