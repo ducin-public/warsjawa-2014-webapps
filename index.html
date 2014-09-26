@@ -289,8 +289,27 @@ cd my-yo-project
 yo webapp
 </code></pre>
 
+<p>if running <code>grunt</code> fails on PhantomJS, run:</p>
+
+<pre><code>cd test
+bower install
+cd ..
+</code></pre>
+
 <h2>
 <a name="yeoman-workflow" class="anchor" href="#yeoman-workflow"><span class="octicon octicon-link"></span></a>yeoman workflow</h2>
+
+<p><img class="emoji" title=":exclamation:" alt=":exclamation:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2757.png" height="20" width="20" align="absmiddle"> everything is configured for you. Really.</p>
+
+<p>build the entire application:</p>
+
+<pre><code>grunt build
+</code></pre>
+
+<p>open your built application:</p>
+
+<pre><code>grunt serve
+</code></pre>
 
 <p><a href="http://yeoman.io/learning/">http://yeoman.io/learning/</a></p>
 
@@ -310,7 +329,7 @@ yo webapp
 </code></pre>
 
 <ul>
-<li>create travis manifest file (grab <a href="files/.travis.yml">example</a>):</li>
+<li>create travis manifest file (grab <a href="files/.travis.yml">example</a> or <a href="https://github.com/tkoomzaaskz/warsjawa-2014-webapps/blob/master/files/.travis.yml">this</a> if previous link is broken):</li>
 </ul><pre><code>$EDITOR .travis.yml
 </code></pre>
 
@@ -323,6 +342,8 @@ yo webapp
 <li>
 <a href="http://sinonjs.org/">sinon.js</a> problem: install it with bower and <a href="https://github.com/yatskevich/grunt-bower-task">grunt-bower-task</a> (rely on <a href="https://muffinresearch.co.uk/using-sinon-js-with-bower-why-is-sinon-foo-undefined/">this article</a>)</li>
 </ul><p><img src="images/modernizr-small.png" alt="Modernizr logo" title="moedrnizr logo"></p>
+
+<p><a href="http://modernizr.github.io/Modernizr/test/">feature test suite</a></p>
 
 <h2>
 <a name="further-practice" class="anchor" href="#further-practice"><span class="octicon octicon-link"></span></a>further practice</h2>
