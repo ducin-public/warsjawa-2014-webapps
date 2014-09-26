@@ -209,10 +209,21 @@ npm install grunt --save-dev
 <pre><code>$EDITOR Gruntfile.js
 </code></pre>
 
-<p>or automatically:</p>
+<p>or automatically... First, install templates. This includes manually creating empty directory which will contain templates and then cloning git repositories there:</p>
+
+<pre><code>mkdir ~/.grunt-init
+git clone https://github.com/gruntjs/grunt-init-gruntfile.git ~/.grunt-init/gruntfile
+# git clone https://github.com/gruntjs/grunt-init-jquery.git ~/.grunt-init/jquery
+</code></pre>
+
+<p>Install <code>grunt-init</code> module, providing new binary:</p>
 
 <pre><code>[sudo] npm install -g grunt-init
-grunt-init gruntfile
+</code></pre>
+
+<p>and finally generate Gruntfile.js:</p>
+
+<pre><code>grunt-init gruntfile
 </code></pre>
 
 <p><img class="emoji" title=":question:" alt=":question:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/2753.png" height="20" width="20" align="absmiddle"> more <a href="http://stackoverflow.com/a/18745996/769384">grunt-init tasks</a>.</p>
