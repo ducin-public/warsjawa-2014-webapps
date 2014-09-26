@@ -272,7 +272,7 @@ grunt-init gruntfile
 <pre><code>[sudo] npm install -g yo
 </code></pre>
 
-<p>searches <code>generator-*</code> node modules</p>
+<p>search <code>generator-*</code> node modules (<code>npm search generator-</code>)</p>
 
 <h2>
 <a name="using-generators" class="anchor" href="#using-generators"><span class="octicon octicon-link"></span></a>using generators</h2>
@@ -289,7 +289,7 @@ cd my-yo-project
 yo webapp
 </code></pre>
 
-<p>if running <code>grunt</code> fails on PhantomJS, run:</p>
+<p>if running <code>grunt</code> fails on PhantomJS, your test depencencies may not be satisfied. Need to run:</p>
 
 <pre><code>cd test
 bower install
@@ -306,9 +306,14 @@ cd ..
 <pre><code>grunt build
 </code></pre>
 
-<p>open your built application:</p>
+<p>open your application (source version):</p>
 
 <pre><code>grunt serve
+</code></pre>
+
+<p>and built version:</p>
+
+<pre><code>grunt serve:dist
 </code></pre>
 
 <p>analyse the new Gruntfile. As long as you can ;)</p>
@@ -321,9 +326,9 @@ cd ..
 <pre><code>[sudo] npm install -g generator-backbone
 </code></pre>
 
-<p>and follow <a href="https://github.com/yeoman/generator-backbone#typical-workflow">typical workflow</a> instructions:</p>
+<p>and follow <a href="https://github.com/yeoman/generator-backbone#typical-workflow">typical workflow</a> instructions.</p>
 
-<p><a href="http://yeoman.io/learning/">http://yeoman.io/learning/</a></p>
+<p>Read more basics at <a href="http://yeoman.io/learning/">http://yeoman.io/learning/</a></p>
 
 <hr><h1>
 <a name="travis-continuous-integration" class="anchor" href="#travis-continuous-integration"><span class="octicon octicon-link"></span></a>
@@ -334,7 +339,7 @@ cd ..
 <ul>
 <li>register account (using github account)</li>
 <li>create stub test command</li>
-<li>update package.json:</li>
+<li>update package.json (my-test-command may be simply: <code>"grunt test"</code>):</li>
 </ul><pre><code>"scripts": {
     "test": &lt;my-test-command&gt;
 }
